@@ -86,7 +86,7 @@ end
     end
   end
 
-{% elsif flag?(:linux) %}
+{% elsif flag?(:linux) || flag?(:netbsd) %} # XXX write sysctl version
   class Process
     private def self.executable_path_impl
       "/proc/self/exe"

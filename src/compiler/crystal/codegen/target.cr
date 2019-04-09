@@ -47,6 +47,8 @@ class Crystal::Codegen::Target
       "freebsd"
     when .openbsd?
       "openbsd"
+    when .starts_with?("netbsd")
+      "netbsd"
     else
       environment
     end
@@ -72,12 +74,16 @@ class Crystal::Codegen::Target
     @environment.starts_with?("openbsd")
   end
 
+  def netbsd?
+    @environment.starts_with?("netbsd")
+  end
+
   def linux?
     @environment.starts_with?("linux")
   end
 
   def unix?
-    macos? || freebsd? || openbsd? || linux?
+    macos? || freebsd? || openbsd? || netbsd? || linux?
   end
 
   def gnu?

@@ -143,7 +143,7 @@ class Thread
       # FIXME: pthread_get_stacksize_np returns bogus value on macOS X 10.9.0:
       address = LibC.pthread_get_stackaddr_np(@th) - LibC.pthread_get_stacksize_np(@th)
 
-    {% elsif flag?(:freebsd) %}
+    {% elsif flag?(:freebsd) || flag?(:netbsd) %}
       ret = LibC.pthread_attr_init(out attr)
       unless ret == 0
         LibC.pthread_attr_destroy(pointerof(attr))
