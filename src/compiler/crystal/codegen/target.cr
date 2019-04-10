@@ -47,7 +47,7 @@ class Crystal::Codegen::Target
       "freebsd"
     when .openbsd?
       "openbsd"
-    when .starts_with?("netbsd")
+    when .netbsd?
       "netbsd"
     else
       environment
